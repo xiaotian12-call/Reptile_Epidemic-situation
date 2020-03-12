@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- 引入 ECharts 文件 -->
+<script src="js/echarts.js"></script>
+</head>
+<body>
+    <!-- 为 ECharts 准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 100%;height:450px;"></div>
+</body>
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+     var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+       var option = {
+           barWidth:30,//条形的宽的为30
+           tooltip: {},
+           legend: {//说明
+                    //orient: 'vertical', //说明显示在的位置所在
+                    // center: 'center ',//说明的位置居中显示 默认居中横排显示
+                    data:['期中', '期末'],//数据说明
+					bottom: 'bottom',
+                    },
+           xAxis: {//X轴上的内容
+                    type : 'category',
+                    axisLabel:{
+                        //横坐标上的文字斜着显示 文字颜色 begin 
+                             interval:0,
+                             rotate:45,
+                             margin:10,
+                             textStyle:{color:"#ec6869" }
+                        //横坐标上的文字换行显示 文字颜色end
+                             },
+                    type : 'category',
+                    data: ["语文","数学","英语","物理","化学"]
+                  },
+            yAxis: {//Y轴上的内容
+                     type : 'value'
+                   },
+			title:{
+				 text: '霸下',//主标题文本，'\n'指定换行
+				 subtext: '2019年秋  实验中学学生成绩 ',
+				 left: 'center',
+			},
+            series: [
+                //第一条数据 begin
+                    {
+                    type: 'bar',//Echart 柱状图（bar）
+                    name:'期中',
+                    data: [60, 70, 55, 33, 12],
+                        //柱状条颜色的设置为#eb6768 begin
+                        itemStyle: {
+                                normal: {
+                                color: '#eb6768',
+                                shadowBlur: 2,
+                                shadowColor: 'rgba(3, 3, 4, 0.5)'
+                                        }
+                                    }
+                        //柱状条颜色的设置为#eb6768 end
+                    },
+                 //第一条数据 end
+                 
+                 //第二条数据 begin    
+                    {
+                    type: 'bar',
+                    name:'期末',
+                    data: [63, 65, 35, 18, 24],
+                    //柱状条颜色的设置为#eb6768 begin
+                    itemStyle: {
+                            normal: {
+                                color: '#3b8ede',
+                                shadowBlur: 2,
+                                shadowColor: 'rgba(3, 3, 4, 0.5)'
+                                  }
+                               }
+                    //柱状条颜色的设置为#eb6768  end    
+                  } 
+               //第二条数据 end    
+               ] 
+             };
+       
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</html>
